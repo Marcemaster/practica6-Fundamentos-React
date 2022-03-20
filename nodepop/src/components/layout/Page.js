@@ -9,7 +9,6 @@ function Page({ title, children }) {
   );
 }
 
-// <Fragment></Fragment>
-// <></>
+
 
 export default Page;

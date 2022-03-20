@@ -7,17 +7,7 @@ import T from 'prop-types';
 
 import './LoginPage.css';
 
-function useRenders() {
-  const count = useRef(1);
-
-  useEffect(() => {
-    count.current++;
-  });
-  return count.current;
-}
-
 function LoginPage({ onLogin }) {
-  const renders = useRenders();
   const ref = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,11 +20,11 @@ function LoginPage({ onLogin }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log(ref.current);
     ref.current.focus();
   }, []);
 
   const { username, password, remember } = credentials;
+
 
   const handleChange = useCallback(event => {
     setCredentials(credentials => ({
@@ -65,23 +55,21 @@ function LoginPage({ onLogin }) {
   };
 
   const buttonDisabled = useMemo(() => {
-    console.log('calculando...');
     return !username || !password || isLoading;
   }, [username, password, isLoading]);
 
   return (
     <div className="loginPage">
-      {renders}
-      <h1 className="loginPage-title">Log in to Twitter</h1>
+      <h1 className="loginPage-title">Log in to Nodepop</h1>
       <form className="loginForm" onSubmit={handleSubmit}>
         <FormField
           type="text"
           name="username"
-          label="phone, email or username"
+          label="email"
           className="loginForm-field"
           value={username}
           onChange={handleChange}
-          // ref={ref}
+          ref={ref}
         />
         <FormField
           type="password"
@@ -89,7 +77,7 @@ function LoginPage({ onLogin }) {
           label="password"
           className="loginForm-field"
           value={password}
-          onChange={handleChange}
+          onChange={handleChange} 
           ref={ref}
         />
         <input
@@ -98,16 +86,7 @@ function LoginPage({ onLogin }) {
           checked={remember}
           value="remember"
           onChange={handleChange}
-        />
-        <select value="2" onChange={event => console.log(event)}>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-        </select>
-        <input
-          type="file"
-          onChange={event => console.log(event.target.files[0])}
-        />
+        />Remember password
 
         <Button
           className="loginForm-submit"
