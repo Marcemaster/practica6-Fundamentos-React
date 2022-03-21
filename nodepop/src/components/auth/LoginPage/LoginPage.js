@@ -12,7 +12,7 @@ function LoginPage({ onLogin }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [credentials, setCredentials] = useState({
-    username: '',
+    email: '',
     password: '',
     remember: false,
   });
@@ -23,7 +23,7 @@ function LoginPage({ onLogin }) {
     ref.current.focus();
   }, []);
 
-  const { username, password, remember } = credentials;
+  const { email, password, remember } = credentials;
 
 
   const handleChange = useCallback(event => {
@@ -55,8 +55,8 @@ function LoginPage({ onLogin }) {
   };
 
   const buttonDisabled = useMemo(() => {
-    return !username || !password || isLoading;
-  }, [username, password, isLoading]);
+    return !email || !password || isLoading;
+  }, [email, password, isLoading]);
 
   return (
     <div className="loginPage">
@@ -64,10 +64,10 @@ function LoginPage({ onLogin }) {
       <form className="loginForm" onSubmit={handleSubmit}>
         <FormField
           type="text"
-          name="username"
+          name="email"
           label="email"
           className="loginForm-field"
-          value={username}
+          value={email}
           onChange={handleChange}
           ref={ref}
         />
