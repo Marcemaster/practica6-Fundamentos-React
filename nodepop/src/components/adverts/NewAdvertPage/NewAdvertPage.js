@@ -1,6 +1,6 @@
 import Page from "../../layout/Page";
-import Textarea from "../../common/Textarea";
 import Button from "../../common/Button";
+import Photo from "../../common/Photo";
 import { useState } from "react";
 import { createAdvert } from "../service";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -9,18 +9,20 @@ const NewAdvertPage = () => {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
-  const [sale, setSale] = useState("");
-  const [price, setPrice] = useState("");
-  const [tags, setTags] = useState("");
+  const [sale, setSale] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [tags, setTags] = useState([]);
   const [photo, setPhoto] = useState("");
 
   const [error, setError] = useState(null);
 
   const [createdAdvert, setCreatedAdvert] = useState(null);
 
+  /* NO PUEDO USAR ESTA FUNCIÓN PORQUE HABRÍA QUE APLICAR EL CAMBIO PARA CADA UNA DE LAS PROPS, NO HAY SOLAMENTE CONTENT.
   const handleChange = (event) => {
     setContent(event.target.value);
   };
+  */
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,45 +35,44 @@ const NewAdvertPage = () => {
     }
   };
 
-  if (createdTweet) {
+  if (createdAdvert) {
     return <Navigate to={`/adverts/${createdAdvert.id}`} />;
   }
 
   if (error?.status === 401) {
     return <Navigate to='/login' />;
   }
-    /* ESTO ES LO ÚNICO QUE FALTA COPIAR DE LA CREACIÓN DE ANUNCIOS. ESTE ARCHIVO ES TODO FRUTA, SE ESTÁ IMPROVISANDO.
+
   return (
-    <Page title='What are you thinking...'>
-      <div className='newTweetPage bordered'>
-        <div className='left'>
-          <Photo />
-        </div>
-        <div className='right'>
-          <form onSubmit={handleSubmit}>
-            <Textarea
-              className='newTweetPage-textarea'
-              placeholder="Hey! What's up!"
-              value={content}
-              onChange={handleChange}
-              maxLength={MAX_CHARACTERS}
-            />
-            <div className='newTweetPage-footer'>
-              <span className='newTweetPage-characters'>{characters}</span>
-              <Button
-                type='submit'
-                className='newTweetPage-submit'
-                variant='primary'
-                disabled={buttonDisabled}
-              >
-                Let's go!
-              </Button>
-            </div>
-          </form>
-        </div>
+    <Page title='Create new advert'>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input type='text' id='name' placeholder='name' name='name'></input>
+          <input type='number' id='price' placeholder='price' name='price'></input>
+          
+          <input type='radio' id="true" name='sale' value='true'></input>
+          <label htmlFor="true">On Sale</label>
+          <input type='radio' id="false" name='sale' value='false'></input>
+          <label htmlFor="false">Searching</label>
+
+      
+          <label htmlFor='tags'>Choose tags</label>
+          <select name='tags' id='tags' multiple>
+            <option value='lifestyle'>lifestyle</option>
+            <option value='mobile'>mobile</option>
+            <option value='motor'>motor</option>
+            <option value='work'>work</option>
+          </select>
+
+          <input type="file" id="photo" alt="select image"></input>
+
+          <Button type='submit' className='newAdvert-submit' variant='primary'>
+            Create Advert
+          </Button>
+        </form>
       </div>
     </Page>
-  );*/
+  );
 };
 
 export default NewAdvertPage;
