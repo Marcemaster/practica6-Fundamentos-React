@@ -83,6 +83,7 @@ function LoginPage({ onLogin }) {
         <input
           type="checkbox"
           name="remember"
+          id="checkbox"
           checked={remember}
           value="remember"
           onChange={handleChange}

@@ -7,7 +7,8 @@ const Advert = ({ name, sale, price, tags, photo }) => {
         <div className='advert-sale'>{sale}</div>
         <div className='advert-price'>{price}</div>
         <div className='advert-tags'>{tags}</div>
-        <div className='advert-photo'>{photo}</div>
+        <img className='advert-photo' src={photo}></img>
+        
     </article>
   );
 };

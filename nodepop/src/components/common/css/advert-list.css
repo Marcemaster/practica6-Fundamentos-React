@@ -1,0 +1,9 @@
+.advert:hover {
+    border: solid 2px olive;
+    border-radius: 8px;
+}
+
+.advert:hover > h3 {
+    text-decoration: underline olive;
+    text-decoration-thickness: 2px;
+}

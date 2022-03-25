@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import { ReactComponent as Icon } from '../../assets/twitter.svg';
+import { ReactComponent as Icon } from '../../assets/nodepop.svg';
 import './Header.css';
 import AuthButton from '../auth/AuthButton';
 
@@ -9,9 +9,6 @@ function Header({ className }) {
     <header className={classNames('header', className)}>
       <Link to="/">
         <div className="header-logo">
-          {
-          // FALTA INCLUIR IMG
-          }
           <Icon width="32" height="32" />
         </div>
       </Link>

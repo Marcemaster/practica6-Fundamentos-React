@@ -8,8 +8,12 @@ function AuthButton({ className }) {
   const { isLogged, handleLogout: onLogout } = useAuth();
 
   const handleLogoutClick = async () => {
-    await logout();
-    onLogout();
+    if(
+      window.confirm("Are you sure?")
+    ) {
+      await logout();
+      onLogout();
+    }
   };
 
   return isLogged ? (

@@ -5,6 +5,7 @@ import Button from "../../common/Button";
 import Advert from "./Advert";
 import { getAdverts } from "../service";
 
+
 const EmptyList = () => (
   <div>
     <p>Publish the first add!</p>
@@ -31,23 +32,21 @@ const AdvertsPage = () => {
   const adverts = useAdverts();
 
   return (
-    <Page title='Adverts List:'>
-      <div>
+      <Page title='Adverts List:' className='advert-list'>
         {adverts.length ? (
-          <ul>
+          <div className='advert-list'>
             {adverts.map((advert) => (
               <li key={advert.id}>
                 <Link to={`/adverts/${advert.id}`}>
-                  <Advert {...advert} />
+                  <Advert {...advert} className='advert' />
                 </Link>
               </li>
             ))}
-          </ul>
+          </div>
         ) : (
           <EmptyList />
         )}
-      </div>
-    </Page>
+      </Page>
   );
 };
 
