@@ -4,6 +4,7 @@ import Page from "../../layout/Page";
 import Button from "../../common/Button";
 import Advert from "./Advert";
 import { getAdverts } from "../service";
+import Filters from "../../layout/Filters";
 
 
 const EmptyList = () => (
@@ -32,9 +33,12 @@ const AdvertsPage = () => {
   const adverts = useAdverts();
 
   return (
-      <Page title='Adverts List:' className='advert-list'>
+      <Page title='NODEPOP' className='advert-list'>
         {adverts.length ? (
-          <div className='advert-list'>
+          <div className='advert-list-page'>
+            <Filters/>
+            <div className='advert-list-page'>
+            <h2>Advert list:</h2>
             {adverts.map((advert) => (
               <li key={advert.id}>
                 <Link to={`/adverts/${advert.id}`}>
@@ -42,6 +46,7 @@ const AdvertsPage = () => {
                 </Link>
               </li>
             ))}
+            </div>
           </div>
         ) : (
           <EmptyList />

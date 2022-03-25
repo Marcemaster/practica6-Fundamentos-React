@@ -95,7 +95,7 @@ const NewAdvertPage = () => {
           ></input>
 
           <label htmlFor='tags'>Choose tags</label>
-          <select name='tags' id='tags' onChange={handleTagsChange} value={tags} multiple>
+          <select name='tags' id='tags' onChange={handleTagsChange} value={[tags]} multiple>
             <option value="lifestyle" >lifestyle</option>
             <option value="mobile" >mobile</option>
             <option value="motor" >motor</option>

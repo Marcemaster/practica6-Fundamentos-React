@@ -7,8 +7,14 @@ const Advert = ({ name, sale, price, tags, photo }) => {
         <div className='advert-sale'>{sale}</div>
         <div className='advert-price'>{price}</div>
         <div className='advert-tags'>{tags}</div>
-        <img className='advert-photo' src={photo}></img>
-        
+        {// HAY QUE CAMBIAR ESTOo!! 
+          {if (photo==="no") {
+            return {
+
+              <img className='advert-photo' alt="advert" src={photo}></img>
+            }
+          }}
+        }
     </article>
   );
 };

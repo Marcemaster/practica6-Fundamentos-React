@@ -1,19 +1,19 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import Button from '../../common/Button';
-import FormField from '../../common/FormField';
-import { login } from '../service';
-import T from 'prop-types';
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import Button from "../../common/Button";
+import FormField from "../../common/FormField";
+import { login } from "../service";
+import T from "prop-types";
 
-import './LoginPage.css';
+import "./LoginPage.css";
 
 function LoginPage({ onLogin }) {
   const ref = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
   const [credentials, setCredentials] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
     remember: false,
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -25,12 +25,11 @@ function LoginPage({ onLogin }) {
 
   const { email, password, remember } = credentials;
 
-
-  const handleChange = useCallback(event => {
-    setCredentials(credentials => ({
+  const handleChange = useCallback((event) => {
+    setCredentials((credentials) => ({
       ...credentials,
       [event.target.name]:
-        event.target.type === 'checkbox'
+        event.target.type === "checkbox"
           ? event.target.checked
           : event.target.value,
     }));
@@ -38,7 +37,7 @@ function LoginPage({ onLogin }) {
 
   const resetError = () => setError(null);
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       resetError();
@@ -46,7 +45,7 @@ function LoginPage({ onLogin }) {
       await login(credentials);
       setIsLoading(false);
       onLogin();
-      const from = location.state?.from?.pathname || '/';
+      const from = location.state?.from?.pathname || "/";
       navigate(from, { replace: true });
     } catch (error) {
       setError(error);
@@ -77,7 +76,7 @@ function LoginPage({ onLogin }) {
           label="password"
           className="loginForm-field"
           value={password}
-          onChange={handleChange} 
+          onChange={handleChange}
           ref={ref}
         />
         <input
@@ -87,7 +86,9 @@ function LoginPage({ onLogin }) {
           checked={remember}
           value="remember"
           onChange={handleChange}
-        />Remember password
+        />
+        <div>Remember password</div>
+
 
         <Button
           className="loginForm-submit"

@@ -6,6 +6,8 @@ import { getAdvert } from '../service';
 
 // NO TENGO NI IDEA DE ESTO, REVISAR MAÑANA.
 
+
+
 class AdvertPageotro extends React.Component {
     constructor(props) {
       super(props);

@@ -10,6 +10,7 @@ import AdvertsPage from "./components/adverts/AdvertsPage/AdvertsPage";
 
 import { AuthContextProvider } from "./components/auth/context";
 import Layout from "./components/layout/Layout";
+import { NotFoundPage } from "./components/notFoundPage/NotFoundPage";
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -53,7 +54,7 @@ function App({ isInitiallyLogged }) {
             }
           />
           <Route path='/' element={<Navigate to='/adverts' />} />
-          <Route path='/404' element={<div>404 | Not Found Page</div>} />
+          <Route path='/404' element={<NotFoundPage/>} />
           <Route path='*' element={<Navigate to='/404' />} />
         </Routes>
       </AuthContextProvider>
