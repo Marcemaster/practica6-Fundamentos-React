@@ -8,7 +8,7 @@ function Filters() {
     <div>
       <h2>Filters</h2>
       <div className="wrapper">
-        <form onSubmit={console.log("Submiteando")}>
+        <form /*onSubmit={console.log("Submiteando")}*/>
           <input type='text' id='name' placeholder='name' name='name'></input>
           <label htmlFor='true'>On Sale</label>
           <input type='radio' id='true' name='sale'></input>

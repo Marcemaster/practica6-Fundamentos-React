@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import Button from '../common/Button';
 
 import { logout } from '../auth/service';
@@ -16,15 +15,11 @@ function AuthButton({ className }) {
     }
   };
 
-  return isLogged ? (
+  return (
     <Button className={className} onClick={handleLogoutClick}>
       Logout
     </Button>
-  ) : (
-    <Button as={Link} to="/login" variant="primary" className={className}>
-      Login
-    </Button>
-  );
+  )
 }
 
 export default AuthButton;
