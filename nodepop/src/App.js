@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import LoginPage from "./components/auth/LoginPage/LoginPage";
+import LoginPage from "./pages/LoginPage";
 import RequireAuth from "./components/auth/RequireAuth";
 
-import NewAdvertPage from "./components/adverts/NewAdvertPage/NewAdvertPage";
-import AdvertPage from "./components/adverts/AdvertPage/AdvertPage"; // RENOMBRAR ESTA FUNCION, REFACTORIZAR POR LA CLASE EN EL ARCHIVO.
-import AdvertsPage from "./components/adverts/AdvertsPage/AdvertsPage";
+import NewAdvertPage from "./pages/NewAdvertPage";
+import AdvertPage from "./pages/AdvertPage";
+import AdvertsPage from "./pages/AdvertsPage";
+
 
 import { AuthContextProvider } from "./components/auth/context";
-import Layout from "./components/layout/Layout";
-import { NotFoundPage } from "./components/notFoundPage/NotFoundPage";
+import { NotFoundPage } from "./components/notFound/NotFoundPage";
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);

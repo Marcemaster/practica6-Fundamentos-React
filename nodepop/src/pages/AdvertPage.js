@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import Page from '../../layout/Page';
-import { getAdvert } from '../service';
+import Page from '../components/layout/Page';
+import { getAdvert } from '../components/adverts/service';
 
 
 // NO TENGO NI IDEA DE ESTO, REVISAR MAÑANA.

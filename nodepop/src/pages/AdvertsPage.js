@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Page from "../../layout/Page";
-import Button from "../../common/Button";
-import Advert from "./Advert";
-import { getAdverts } from "../service";
-import Filters from "../../layout/Filters";
+
+import Page from "../components/layout/Page";
+import Button from "../components/common/Button.js";
+import Advert from "../components/adverts/Advert";
+
+import { getAdverts } from "../components/adverts/service.js";
+import Filters from "../components/layout/Filters";
 
 
 const EmptyList = () => (

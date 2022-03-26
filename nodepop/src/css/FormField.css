@@ -27,11 +27,6 @@
   text-transform: capitalize;
 }
 
-/* .formField--focused .formField-label {
-  color: rgb(29, 161, 242);
-  border-color: rgb(29, 161, 242);
-} */
-
 .formField:focus-within .formField-label {
   color: rgb(29, 161, 242);
   border-color: rgb(29, 161, 242);

@@ -1,8 +1,9 @@
-import Page from "../../layout/Page";
-import Button from "../../common/Button";
 import { useState } from "react";
-import { createAdvert } from "../service";
 import { Navigate, useNavigate } from "react-router-dom";
+
+import Page from "../components/layout/Page";
+import Button from "../components/common/Button";
+import { createAdvert } from "../components/adverts/service";
 
 const NewAdvertPage = () => {
   const navigate = useNavigate();

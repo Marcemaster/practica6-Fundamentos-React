@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Button from "../../common/Button";
-import FormField from "../../common/FormField";
-import { login } from "../service";
+import Button from "../components/common/Button.js";
+import FormField from "../components/common/FormField.js";
+
+import { login } from "../components/auth/service.js";
 import T from "prop-types";
 
-import "./LoginPage.css";
+import "../css/LoginPage.css";
+import "../css/styles.css";
 
 function LoginPage({ onLogin }) {
   const ref = useRef(null);
@@ -53,54 +55,58 @@ function LoginPage({ onLogin }) {
     }
   };
 
+  // USAR ESTO PARA COMPROBACIONES DEL FORMULARIO
   const buttonDisabled = useMemo(() => {
     return !email || !password || isLoading;
   }, [email, password, isLoading]);
 
   return (
-    <div className="loginPage">
-      <h1 className="loginPage-title">Log in to Nodepop</h1>
-      <form className="loginForm" onSubmit={handleSubmit}>
+    <div className='loginPage'>
+      <h1 className='loginPage-title'>Log in to Nodepop</h1>
+      <form className='loginForm' onSubmit={handleSubmit}>
         <FormField
-          type="text"
-          name="email"
-          label="email"
-          className="loginForm-field"
+          type='text'
+          name='email'
+          label='email'
+          className='loginForm-field'
           value={email}
           onChange={handleChange}
           ref={ref}
         />
         <FormField
-          type="password"
-          name="password"
-          label="password"
-          className="loginForm-field"
+          type='password'
+          name='password'
+          label='password'
+          className='loginForm-field'
           value={password}
           onChange={handleChange}
           ref={ref}
         />
-        <input
-          type="checkbox"
-          name="remember"
-          id="checkbox"
-          checked={remember}
-          value="remember"
-          onChange={handleChange}
-        />
-        <div>Remember password</div>
-
+        <div>
+          <input
+            type='checkbox'
+            name='remember'
+            id='checkbox'
+            checked={remember}
+            value='remember'
+            onChange={handleChange}
+            />
+          <label htmlFor="checkbox">
+          Remember password
+          </label>
+        </div>
 
         <Button
-          className="loginForm-submit"
-          type="submit"
-          variant="primary"
+          className='loginForm-submit'
+          type='submit'
+          variant='primary'
           disabled={buttonDisabled}
         >
           Log in
         </Button>
       </form>
       {error && (
-        <div onClick={resetError} className="loginPage-error">
+        <div onClick={resetError} className='loginPage-error'>
           {error.message}
         </div>
       )}
