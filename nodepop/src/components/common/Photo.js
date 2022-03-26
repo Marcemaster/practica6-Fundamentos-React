@@ -1,8 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import defaultPhoto from '../../assets/default_profile.png';
-import './Photo.css';
 
+const defaultPhoto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNK7-n-r_w_qCEIjsnu8VXMBamUkSmLUr9Eg&usqp=CAU"
 const Photo = ({ className, ...props }) => (
   <img
     className={classNames('photo', className)}
