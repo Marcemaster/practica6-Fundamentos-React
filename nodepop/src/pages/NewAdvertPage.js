@@ -45,7 +45,7 @@ const NewAdvertPage = () => {
       console.log(formData)
       const advert = await createAdvert(formData);
       setCreatedAdvert(advert);
-      // navigate(`/adverts/${createdAdvert.id}`); OPCIONAL???
+      navigate(`/adverts/${createdAdvert.id}`);
     } catch (error) {
       setError(error);
     }

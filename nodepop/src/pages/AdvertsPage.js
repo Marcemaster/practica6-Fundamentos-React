@@ -7,6 +7,8 @@ import Advert from "../components/adverts/Advert";
 
 import { getAdverts } from "../components/adverts/service.js";
 import Filters from "../components/layout/Filters";
+import "../css/advert-list.css"
+import "../css/styles.css"
 
 
 const EmptyList = () => (
@@ -39,8 +41,8 @@ const AdvertsPage = () => {
         {adverts.length ? (
           <div className='advert-list-page'>
             <Filters/>
-            <div className='advert-list-page'>
             <h2>Advert list:</h2>
+            <div className='advert-list-div'>
             {adverts.map((advert) => (
               <li key={advert.id}>
                 <Link to={`/adverts/${advert.id}`}>

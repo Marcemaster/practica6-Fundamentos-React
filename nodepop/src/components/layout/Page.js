@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
 import Header from './Header';
-import Filters from './Filters.js';
 
 function Page({ title, children }) {
   return (

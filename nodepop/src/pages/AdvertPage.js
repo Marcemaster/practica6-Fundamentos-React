@@ -2,7 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Page from "../components/layout/Page";
 import { getAdvert } from "../components/adverts/service";
+
 import Advert from "../components/adverts/Advert";
+import Button from "../components/common/Button.js";
+import DeleteButton from "../components/adverts/DeleteButton.js"
+
 
 class AdvertPage extends React.Component {
   constructor(props) {
@@ -37,17 +41,18 @@ class AdvertPage extends React.Component {
   render() {
     const { advert, error, isLoading } = this.state;
 
-      if (error?.status === 401) {
-        return <Navigate to="/login" />;
-      }
-  
-      if (error?.status === 404) {
-        return <Navigate to="/404" />;
-      }
+    if (error?.status === 401) {
+      return <Navigate to='/login' />;
+    }
+
+    if (error?.status === 404) {
+      return <Navigate to='/404' />;
+    }
 
     return (
       <Page title='Advert detail'>
         <Advert {...advert} className='advert'></Advert>
+        <DeleteButton advertId={this.props.advertId}></DeleteButton>
       </Page>
     );
   }
@@ -57,8 +62,7 @@ const AdvertPageFunction = () => {
   const ref = useRef(null);
   const { advertId } = useParams();
 
-  useEffect(() => {
-  }, []);
+  useEffect(() => {}, []);
 
   return <AdvertPage ref={ref} advertId={advertId} />;
 };
