@@ -6,8 +6,6 @@ import Button from "../components/common/Button";
 import { createAdvert } from "../components/adverts/service";
 import FormField from "../components/common/FormField.js";
 
-import AnimatedMulti from "../components/common/AnimatedMulti.js";
-
 const NewAdvertPage = () => {
   const navigate = useNavigate();
 

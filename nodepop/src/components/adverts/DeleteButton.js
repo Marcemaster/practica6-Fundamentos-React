@@ -6,18 +6,15 @@ function DeleteButton({ advertId }) {
     if (window.confirm("Are you sure?")) {
       try {
         await deleteAdvert(advertId);
-        console.log("Anuncio Borrado!");
         window.location.href = "http://localhost:3000/";
       } catch (error) {
-        console.log("No se ha podido borrar el anuncio");
+        window.alert(error);
         window.location.href = "http://localhost:3000/";
       }
     }
   };
 
-  return (
-    <Button onClick={handleDeleteAdvert}>Borrar anuncio componente</Button>
-  );
+  return <Button onClick={handleDeleteAdvert}>Delete advert</Button>;
 }
 
 export default DeleteButton;

@@ -4,8 +4,7 @@ import Page from "../components/layout/Page";
 import { getAdvert } from "../components/adverts/service";
 
 import Advert from "../components/adverts/Advert";
-import DeleteButton from "../components/adverts/DeleteButton.js"
-
+import DeleteButton from "../components/adverts/DeleteButton.js";
 
 class AdvertPage extends React.Component {
   constructor(props) {

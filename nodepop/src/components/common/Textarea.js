@@ -1,6 +1,6 @@
-import classNames from 'classnames';
-import './Textarea.css';
-import React, { useEffect, useRef } from 'react';
+import classNames from "classnames";
+import "./Textarea.css";
+import React, { useEffect, useRef } from "react";
 
 const Textarea = ({ className, ...props }) => {
   const textAreaRef = useRef(null);
@@ -17,9 +17,9 @@ const Textarea = ({ className, ...props }) => {
   });
 
   return (
-    <div className={classNames('textarea', className)}>
-      <input type="text" />
-      <textarea ref={textAreaRef} {...props} className="textarea-input" />
+    <div className={classNames("textarea", className)}>
+      <input type='text' />
+      <textarea ref={textAreaRef} {...props} className='textarea-input' />
     </div>
   );
 };

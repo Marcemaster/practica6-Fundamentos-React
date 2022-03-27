@@ -20,4 +20,4 @@ export const createAdvert = (advert) => {
 export const deleteAdvert = (advertId) => {
   const url = `${advertsBaseUrl}/${advertId}`;
   return client.delete(url);
-}
+};

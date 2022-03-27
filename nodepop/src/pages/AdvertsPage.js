@@ -7,9 +7,8 @@ import Advert from "../components/adverts/Advert";
 
 import { getAdverts } from "../components/adverts/service.js";
 import Filters from "../components/layout/Filters";
-import "../css/advert-list.css"
-import "../css/styles.css"
-
+import "../css/advert-list.css";
+import "../css/styles.css";
 
 const EmptyList = () => (
   <div>
@@ -37,12 +36,12 @@ const AdvertsPage = () => {
   const adverts = useAdverts();
 
   return (
-      <Page title='NODEPOP' className='advert-list'>
-        {adverts.length ? (
-          <div className='advert-list-page'>
-            <Filters/>
-            <h2>Advert list:</h2>
-            <div className='advert-list-div'>
+    <Page title='NODEPOP' className='advert-list'>
+      {adverts.length ? (
+        <div className='advert-list-page'>
+          <Filters />
+          <h2>Advert list:</h2>
+          <div className='advert-list-div'>
             {adverts.map((advert) => (
               <li key={advert.id}>
                 <Link to={`/adverts/${advert.id}`}>
@@ -50,12 +49,12 @@ const AdvertsPage = () => {
                 </Link>
               </li>
             ))}
-            </div>
           </div>
-        ) : (
-          <EmptyList />
-        )}
-      </Page>
+        </div>
+      ) : (
+        <EmptyList />
+      )}
+    </Page>
   );
 };
 

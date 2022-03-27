@@ -55,7 +55,6 @@ function LoginPage({ onLogin }) {
     }
   };
 
-  // USAR ESTO PARA COMPROBACIONES DEL FORMULARIO
   const buttonDisabled = useMemo(() => {
     return !email || !password || isLoading;
   }, [email, password, isLoading]);
@@ -90,10 +89,8 @@ function LoginPage({ onLogin }) {
             checked={remember}
             value='remember'
             onChange={handleChange}
-            />
-          <label htmlFor="checkbox">
-          Remember password
-          </label>
+          />
+          <label htmlFor='checkbox'>Remember password</label>
         </div>
 
         <Button

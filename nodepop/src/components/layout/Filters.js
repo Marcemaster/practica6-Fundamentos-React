@@ -1,27 +1,38 @@
 import "./Filters.css";
-import Slider, { Range } from "rc-slider";
-import "rc-slider/assets/index.css";
 import Button from "../common/Button";
+import SliderComp from "../common/SliderComp.js";
 
 function Filters() {
   return (
     <div>
       <h2>Filters</h2>
-      <div className="wrapper">
+      <div className='wrapper'>
         <form /*onSubmit={console.log("Submiteando")}*/>
-          <input type='text' id='name' placeholder='name' name='name'></input>
+          <input
+            type='text'
+            id='name'
+            placeholder='Filter by name'
+            name='name'
+          ></input>
+
           <label htmlFor='true'>On Sale</label>
-          <input type='radio' id='true' name='sale'></input>
+          <input type='radio' id='true' value={true} name='sale'></input>
           <label htmlFor='false'>Searching</label>
-          <input type='radio' id='false' name='sale'></input>
+          <input type='radio' id='false' value={false} name='sale'></input>
           <label htmlFor='both'>Both</label>
-          <input type='radio' id='both' name='both'></input>
+          <input type='radio' id='both' name='sale'></input>
+
+          <div>
+            Price Range
+            <SliderComp />
+          </div>
 
           <input
             type='number'
             id='price-min'
-            placeholder='price-min'
             name='price-min'
+            label='price-min'
+            placeholder='price-min'
           ></input>
           <input
             type='number'

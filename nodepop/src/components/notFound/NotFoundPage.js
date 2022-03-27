@@ -1,5 +1,5 @@
-import React from 'react';
-import {NotFoundBody} from '../../pages/NotFoundBody';
+import React from "react";
+import { NotFoundBody } from "../../pages/NotFoundBody";
 
 export const NotFoundPage = () => {
   return (
