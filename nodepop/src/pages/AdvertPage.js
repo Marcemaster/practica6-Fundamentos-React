@@ -4,7 +4,6 @@ import Page from "../components/layout/Page";
 import { getAdvert } from "../components/adverts/service";
 
 import Advert from "../components/adverts/Advert";
-import Button from "../components/common/Button.js";
 import DeleteButton from "../components/adverts/DeleteButton.js"
 
 

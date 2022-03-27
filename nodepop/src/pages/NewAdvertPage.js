@@ -1,40 +1,36 @@
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 import Page from "../components/layout/Page";
 import Button from "../components/common/Button";
 import { createAdvert } from "../components/adverts/service";
+import FormField from "../components/common/FormField.js";
+
+import AnimatedMulti from "../components/common/AnimatedMulti.js";
 
 const NewAdvertPage = () => {
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [sale, setSale] = useState(false);
-  const [price, setPrice] = useState(0);
-  const [tags, setTags] = useState([]);
-  const [photo, setPhoto] = useState("");
+  const [content, setContent] = useState({
+    name: "",
+    sale: "",
+    tags: "",
+    price: "",
+    photo: "",
+  });
+
+  const { name, sale, tags, price, photo } = content;
+
+  const handleChange = useCallback((event) => {
+    setContent((content) => ({
+      ...content,
+      [event.target.name]: event.target.value,
+    }));
+  }, []);
 
   const [error, setError] = useState(null);
 
   const [createdAdvert, setCreatedAdvert] = useState(null);
-
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
-  const handleSaleChange = (event) => {
-    setSale(event.target.value);
-  };
-  const handlePriceChange = (event) => {
-    setPrice(event.target.value);
-  };
-
-
-  const handleTagsChange = (event) => {
-    setTags(event.target.value);
-  };
-  const handlePhotoChange = (event) => {
-    setPhoto(event.target.value);
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -42,7 +38,7 @@ const NewAdvertPage = () => {
     const formData = new FormData(formElement);
 
     try {
-      console.log(formData)
+      console.log(formData);
       const advert = await createAdvert(formData);
       setCreatedAdvert(advert);
       navigate(`/adverts/${createdAdvert.id}`);
@@ -51,12 +47,13 @@ const NewAdvertPage = () => {
     }
   };
 
-  /*if (createdAdvert) {
+  const buttonDisabled = useMemo(() => {
+    return !name || !sale || !tags || !price;
+  }, [name, sale, tags, price]);
+
+  if (createdAdvert) {
     return <Navigate to={`/adverts/${createdAdvert.id}`} />;
-  }*/
-  // FALTA COMPROBAR LA SELECCIÓN MULTIPLE EN EL FORMULARIO
-  // QUE LOS CAMPOS DE NOMBRE, PRECIO, VENTA, TAGS SEAN REQUERIDOS PARA PODER ENVIAR LA PETICIÓN
-  // QUE EL CAMPO FOTO SEA OPCIONAL Y QUE HAYA UN CHECKBOX QUE LO ACTIVE O DESACTIVE
+  }
 
   if (error?.status === 401) {
     return <Navigate to='/login' />;
@@ -66,53 +63,66 @@ const NewAdvertPage = () => {
     <Page title='Create new advert'>
       <div>
         <form onSubmit={handleSubmit}>
-          <input
+          <FormField
             type='text'
-            id='name'
-            placeholder='name'
             name='name'
+            label='Name'
+            className='loginForm-field'
             value={name}
-            onChange={handleNameChange}
-          ></input>
-
-          <input
-            type='radio'
-            id='true'
-            name='sale'
-            value={sale}
-            onChange={handleSaleChange}
-          ></input>
-          <label htmlFor='true'>On Sale</label>
-          <input type='radio' id='false' name='sale' value={sale}></input>
-          <label htmlFor='false'>Searching</label>
-
-          <input
+            onChange={handleChange}
+          />
+          <div className='radio-group'>
+            <input
+              type='radio'
+              id='true'
+              name='sale'
+              value={true}
+              onChange={handleChange}
+            ></input>
+            <label htmlFor='true'>On Sale</label>
+            <input
+              type='radio'
+              id='false'
+              name='sale'
+              value={false}
+              onChange={handleChange}
+            ></input>
+            <label htmlFor='false'>Searching</label>
+          </div>
+          <FormField
             type='number'
-            id='price'
-            placeholder='price'
             name='price'
+            label='price'
+            placeholder='€'
+            className='loginForm-field'
             value={price}
-            onChange={handlePriceChange}
-          ></input>
+            onChange={handleChange}
+          />
 
-          <label htmlFor='tags'>Choose tags</label>
-          <select name='tags' id='tags' onChange={handleTagsChange} value={[tags]} multiple>
-            <option value="lifestyle" >lifestyle</option>
-            <option value="mobile" >mobile</option>
-            <option value="motor" >motor</option>
-            <option value="work" >work</option>
-          </select>
+          <FormField
+            type='text'
+            name='tags'
+            label='Tags - lifestyle, mobile, motor, work - (one or more separated by commas)'
+            className='loginForm-field'
+            value={tags}
+            onChange={handleChange}
+          />
 
-          <input
+          <FormField
             type='file'
-            name="photo"
-            id='photo'
-            alt='select image'
+            name='photo'
+            label='Select photo (optional)'
+            className='loginForm-field'
             value={photo}
-            onChange={handlePhotoChange}
-          ></input>
+            onChange={handleChange}
+          />
 
-          <Button type='submit' className='newAdvert-submit' variant='primary'>
+          <Button
+            type='submit'
+            className='newAdvert-submit'
+            variant='primary'
+            disabled={buttonDisabled}
+          >
             Create Advert
           </Button>
         </form>
