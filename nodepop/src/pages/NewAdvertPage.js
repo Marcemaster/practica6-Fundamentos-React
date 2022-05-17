@@ -102,7 +102,7 @@ const NewAdvertPage = () => {
             name='tags'
             label='Tags - lifestyle, mobile, motor, work - (one or more separated by commas)'
             className='loginForm-field'
-            value={tags}
+            value={tags} // El value no vale para nada.
             onChange={handleChange}
           />
 
