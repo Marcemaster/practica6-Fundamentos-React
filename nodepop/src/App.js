@@ -10,6 +10,7 @@ import AdvertsPage from "./pages/AdvertsPage";
 
 import { AuthContextProvider } from "./components/auth/context";
 import { NotFoundPage } from "./components/notFound/NotFoundPage";
+import Layout from "./components/layout/Layout";
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -32,26 +33,14 @@ function App({ isInitiallyLogged }) {
             path='/adverts'
             element={
               <RequireAuth>
-                <AdvertsPage />
+                <Layout/>
               </RequireAuth>
             }
-          />
-          <Route
-            path='/adverts/:advertId'
-            element={
-              <RequireAuth>
-                <AdvertPage />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path='/adverts/new'
-            element={
-              <RequireAuth>
-                <NewAdvertPage />
-              </RequireAuth>
-            }
-          />
+          >
+            <Route index element={<AdvertsPage />} />
+            <Route path=':advertId' element={<AdvertPage />} />
+            <Route path='new' element={<NewAdvertPage />} />
+          </Route>
           <Route path='/' element={<Navigate to='/adverts' />} />
           <Route path='/404' element={<NotFoundPage />} />
           <Route path='*' element={<Navigate to='/404' />} />

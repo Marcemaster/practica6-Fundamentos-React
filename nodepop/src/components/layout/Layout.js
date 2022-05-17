@@ -1,12 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 
-import "./Layout.css";
-import "../common/css/login.css";
-import "../common/css/advert-list.css";
-import "../common/css/navbar.css";
-import "../common/css/styles.css";
-
 function Layout() {
   return (
     <div className='layout'>
